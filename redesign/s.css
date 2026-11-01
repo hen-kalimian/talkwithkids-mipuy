@@ -1,0 +1,62 @@
+@font-face{font-family:Rubik;font-weight:400;src:url(../fonts/Rubik-400-hebrew.woff2) format("woff2");unicode-range:U+0590-05FF}
+@font-face{font-family:Rubik;font-weight:400;src:url(../fonts/Rubik-400-latin.woff2) format("woff2");unicode-range:U+0000-00FF}
+@font-face{font-family:Rubik;font-weight:600;src:url(../fonts/Rubik-600-hebrew.woff2) format("woff2");unicode-range:U+0590-05FF}
+@font-face{font-family:"Open Sans";font-weight:400;src:url(../fonts/OpenSans-400-hebrew.woff2) format("woff2");unicode-range:U+0590-05FF}
+@font-face{font-family:"Open Sans";font-weight:400;src:url(../fonts/OpenSans-400-latin.woff2) format("woff2");unicode-range:U+0000-00FF}
+@font-face{font-family:"Open Sans";font-weight:600;src:url(../fonts/OpenSans-600-hebrew.woff2) format("woff2");unicode-range:U+0590-05FF}
+:root{--pink:#FDE1EA;--pink2:#FBC5D6;--fu:#EF406E;--fu2:#B8236B;--mint:#DDF2E8;--mint2:#9fd8bf;--sky:#DCEBFA;--sky2:#b4d3ee;--cream:#FEF6F5;--ink:#3A2225;--sun:#FFF1C9}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:18px/1.7 "Open Sans",Rubik,sans-serif;
+background-image:radial-gradient(#f1d3dc 1.2px,transparent 1.4px);background-size:26px 26px;overflow-x:hidden}
+h1,h2,h3,.rb{font-family:Rubik,sans-serif;font-weight:600;line-height:1.25;margin:0}
+.w{max-width:1040px;margin:0 auto;padding:0 18px}
+.top{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 0;font:600 15px Rubik;color:var(--fu2)}
+.top i{width:9px;height:9px;border-radius:50%;background:var(--fu);display:inline-block}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center;padding:20px 0 46px}
+.tag{display:inline-block;background:var(--mint);color:#1f6b4c;border-radius:999px;padding:3px 14px;font:600 14px Rubik;margin-bottom:12px;transform:rotate(-2deg)}
+h1{font-size:clamp(30px,4.6vw,50px);color:var(--ink)}
+h1 em{font-style:normal;color:var(--fu);background:linear-gradient(transparent 62%,var(--pink2) 62%)}
+.sub{font-size:19px;margin:14px 0 6px}
+.note{font-size:16px;color:#7a5560}
+.paper{background:#fff;border:2px solid var(--pink2);border-radius:22px;padding:22px 24px;position:relative;box-shadow:6px 8px 0 var(--pink)}
+.paper.lines{background-image:repeating-linear-gradient(transparent,transparent 33px,#e6eef8 34px);background-position:0 12px}
+.tape{position:absolute;top:-13px;left:50%;width:96px;height:26px;margin-left:-48px;background:rgba(251,197,214,.85);transform:rotate(-3deg);border-radius:3px}
+.tape.m{background:rgba(159,216,191,.8);transform:rotate(3deg)}
+.tape.s{background:rgba(180,211,238,.85)}
+.tilt{transform:rotate(-2.5deg)}.tilt2{transform:rotate(2deg)}
+.cover{display:block;width:100%;max-width:340px;margin:0 auto;border-radius:10px;box-shadow:10px 12px 0 var(--sky2);border:3px solid #fff}
+form{display:grid;gap:11px;margin-top:6px}
+input[type=text],input[type=email],input[type=tel]{width:100%;border:2px solid var(--pink2);background:#fff;border-radius:14px;padding:12px 16px;font:17px "Open Sans";color:var(--ink);text-align:right}
+input:focus{outline:3px solid var(--sky2);border-color:var(--sky2)}
+.chk{display:flex;gap:9px;align-items:flex-start;font-size:14.5px;color:#7a5560;line-height:1.5}
+.chk input{margin-top:4px;accent-color:var(--fu)}
+.btn{display:block;width:fit-content;max-width:100%;margin:6px auto 0;border:0;cursor:pointer;background:linear-gradient(#F2778F,var(--fu));color:#fff;font:600 19px Rubik;padding:14px 34px;border-radius:999px;box-shadow:0 5px 0 var(--fu2),0 12px 22px rgba(239,64,110,.25);text-align:center;text-decoration:none;white-space:normal}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--fu2)}
+.btn.mint{background:linear-gradient(#7fcdae,#4FB38C);box-shadow:0 5px 0 #2f8a68,0 12px 22px rgba(79,179,140,.25)}
+.btn.ghost{background:#fff;color:var(--fu2);border:2px solid var(--fu);box-shadow:none}
+section{padding:34px 0}
+h2{font-size:clamp(26px,3.6vw,36px);text-align:center;margin-bottom:26px}
+h2 em{font-style:normal;color:var(--fu2)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#fff;border-radius:24px;padding:26px 22px;border:2px solid var(--pink2);position:relative}
+.card.mint{background:var(--mint);border-color:var(--mint2)}
+.card.sky{background:var(--sky);border-color:var(--sky2)}
+.card.sun{background:var(--sun);border-color:#f0dfa6}
+.card h3{font-size:21px;margin:8px 0 8px;color:var(--fu2)}
+.sticker{width:78px;height:78px;object-fit:contain;display:block;margin:-46px auto 0;filter:drop-shadow(3px 4px 0 rgba(0,0,0,.06));transform:rotate(-6deg)}
+.num{width:46px;height:46px;border-radius:50%;background:var(--fu);color:#fff;display:grid;place-items:center;font:600 22px Rubik;margin-bottom:8px}
+.who{display:flex;gap:16px;align-items:center;background:#fff;border:2px dashed var(--pink2);border-radius:22px;padding:18px 22px}
+.who b{color:var(--fu2)}
+.quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.quote{background:#fff;border-radius:6px 28px 28px 28px;border:2px solid var(--sky2);padding:20px 22px;position:relative}
+.quote:nth-child(2n){border-radius:28px 6px 28px 28px;border-color:var(--mint2)}
+.quote b{display:block;margin-top:8px;color:var(--fu2);font:600 15px Rubik}
+.foot{text-align:center;color:#8b6b73;font-size:14px;padding:34px 0 46px}
+.foot a{color:var(--fu2)}
+.draft{position:fixed;bottom:10px;right:10px;background:#FFF700;box-shadow:0 0 12px #FFF700;border-radius:10px;padding:5px 12px;font:600 13px Rubik;z-index:9}
+.steps{display:grid;gap:26px;max-width:760px;margin:0 auto}
+.step{display:grid;grid-template-columns:70px 1fr;gap:18px;align-items:start}
+.step .num{width:62px;height:62px;font-size:30px;transform:rotate(-5deg)}
+.big-video{aspect-ratio:16/9;border-radius:22px;border:3px dashed var(--fu);background:var(--pink);display:grid;place-items:center;text-align:center;padding:20px;color:var(--fu2)}
+@media(max-width:760px){body{font-size:17px}.hero,.grid3,.quotes{grid-template-columns:1fr}.hero{gap:30px}.step{grid-template-columns:54px 1fr;gap:12px}.step .num{width:50px;height:50px;font-size:24px}.tilt,.tilt2{transform:none}.sticker{margin-top:-40px}.cover{max-width:260px}}
