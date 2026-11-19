@@ -131,7 +131,7 @@ const tx=i=>(S.g==='f'&&i[3])?i[3]:i[1];
 const rt=s=>String(s).replace(/\{ילד\}/g,S.g==='f'?'ילדה':'ילד');
 const KID=()=>S.g==='f'?'הילדה':'הילד';
 function nav(){return `<div class="nav noprint">${S.step>0?'<button class="btn alt" onclick="go(S.step-1)">חזרה</button>':''}${S.step<3?'<button class="btn" onclick="go(S.step+1)">'+(S.step==2?'ליצירת הדוח':'להמשך')+'</button>':''}</div>`}
-function go(n){if(S.step===0&&n>0&&!S.g){alert('בחרי קודם אם זה בן או בת');return}S.step=n;save();render();window.scrollTo({top:0,behavior:'smooth'})}
+function go(n){if(S.step===0&&n>0&&!S.g){alert('בחרי קודם ילד או ילדה');return}S.step=n;save();render();window.scrollTo({top:0,behavior:'smooth'})}
 function bind(k){return e=>{S[k]=e.target.value;save()}}
 function pad(id,key,label){return `<div class="card sky"><h3>${label}</h3><div class="padbar"><button data-p="${id}" data-c="#3A2225" class="on">עט כהה</button><button data-p="${id}" data-c="#D14175">עט ורוד</button><button data-p="${id}" data-c="erase">מחק קטן</button><button data-p="${id}" data-c="clear">נקי הכול</button></div><canvas class="pad" id="${id}"></canvas><div class="hint">אפשר לכתוב באצבע, בעט מגע או בעכבר.</div></div>`}
 function initPad(id,key){
@@ -151,7 +151,7 @@ function render(){
  const v=$('view');
  if(S.step==0){
   v.innerHTML=`<div class="card pink"><h2 style="margin-top:0">פרטי הילד והמיפוי</h2><div class="fields">
-  <div><label>בן או בת</label><div class="gsel"><button type="button" class="btn alt ${S.g==='m'?'on':''}" data-g="m">בן</button><button type="button" class="btn alt ${S.g==='f'?'on':''}" data-g="f">בת</button></div></div>
+  <div><label>ילד או ילדה</label><div class="gsel"><button type="button" class="btn alt ${S.g==='m'?'on':''}" data-g="m">ילד</button><button type="button" class="btn alt ${S.g==='f'?'on':''}" data-g="f">ילדה</button></div></div>
   <div><label>שם הילד או הילדה</label><input type="text" id="f_name" value="${esc(S.name)}"></div>
   <div><label>גיל</label><input type="text" id="f_age" value="${esc(S.age)}"></div>
   <div><label>תאריך המיפוי</label><input type="date" id="f_date" value="${esc(S.date)}"></div>
@@ -183,7 +183,7 @@ function render(){
   if(S.r.r14&&S.r.r15)rec.push('שימי לב: נבחרו גם מפגשים קבוצתיים וגם פרטניים, ואי אפשר להמליץ על שניהם יחד. נא להשאיר אחת.');
   const d=S.date?S.date.split('-').reverse().join('.'):'';
   v.innerHTML=`<div class="card rep" id="report"><h2 style="margin-top:0">דוח סיכום מיפוי: הכנה לכיתה א'</h2>
-  <div class="meta"><span>שם: ${esc(S.name)||'___'}</span><span>${S.g==='f'?'בת':'בן'}</span><span>גיל: ${esc(S.age)||'___'}</span><span>תאריך: ${esc(d)}</span><span>מעבירה: ${esc(S.by)||'___'}</span></div>
+  <div class="meta"><span>שם: ${esc(S.name)||'___'}</span><span>${S.g==='f'?'ילדה':'ילד'}</span><span>גיל: ${esc(S.age)||'___'}</span><span>תאריך: ${esc(d)}</span><span>מעבירה: ${esc(S.by)||'___'}</span></div>
   <h2>חוזקות</h2>${str.length?'<ul>'+str.map(t=>`<li>${esc(t)}</li>`).join('')+'</ul>':'<p class="hint">לא סומנו חוזקות.</p>'}
   <h2>מוקדים לחיזוק</h2>${foc.length?foc.map(([t,l])=>`<h3>${t}</h3><ul>${l.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`).join(''):'<p class="hint">לא סומנו מוקדים לחיזוק.</p>'}
   ${S.n1?`<h3>הערות בכתב יד על המיפוי</h3><img src="${S.n1}" alt="">`:''}
