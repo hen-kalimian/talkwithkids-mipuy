@@ -118,7 +118,7 @@ const RECS=[
  ['r10','לתרגל חשבון בעזרת חפצים ומשחקים, ולעבור לבעיות מילוליות בעל פה בהדרגה',['d4','d5']],
  ['r12','לשקול הערכה מקצועית נוספת בשל הקשיים שנצפו',['a5','e2','e3']],
  ['r13','להדגיש את ההצלחות ולתת ל{ילד} לחוות שליטה, כדי לשמור על רצון ללמוד',['e4','a2','a8']],
- ['r14','מומלץ להתחיל בהקדם במפגשים קבוצתיים שיתרמו לתחושת המסוגלות',['a8']],
+ ['r14','מומלץ להתחיל בהקדם במפגשים קבוצתיים שיתרמו לתחושת המסוגלות',[]],
  ['r15','מומלץ להתחיל במפגשים פרטניים לפני המעבר לזוגות או קבוצות כדי לצמצם את הפערים',['a5','c5','d5']]
 ];
 const STEPS=['פרטים','היגדים על הילד','המלצות','דוח סיכום'];
@@ -169,9 +169,10 @@ function render(){
   v.innerHTML=`<div class="card pink"><h2 style="margin-top:0">בחרי המלצות</h2><p class="hint">ההמלצות שמסומנות כ"מומלץ לפי הסימון" נבחרו לפי ההיגדים שסימנת. אפשר לבחור, להוריד ולהוסיף משלך.</p>
   ${sug.length?'<button class="btn alt" id="selsug">לסמן את כל המומלצות</button>':''}</div>
   <div class="card">${RECS.map(([id,t,w])=>`<label class="row ${w.some(i=>S.c[i])?'suggest':''}"><input type="checkbox" data-r="${id}" ${S.r[id]?'checked':''}><span>${rt(t)}${w.some(i=>S.c[i])?'<span class="tag r">מומלץ לפי הסימון</span>':''}</span></label>`).join('')}
+  <div id="conf" class="hint" style="color:#B8236B;font-weight:600;display:${S.r.r14&&S.r.r15?'block':'none'}">שימי לב: אי אפשר להמליץ יחד גם על מפגשים קבוצתיים וגם על מפגשים פרטניים. בחרי אחת מהשתיים.</div>
   <h3>המלצה נוספת בכתב</h3><textarea id="extra">${esc(S.extra)}</textarea></div>`+
   pad('pad2','n2','הערות בכתב יד על ההמלצות')+nav();
-  v.querySelectorAll('input[data-r]').forEach(x=>x.onchange=()=>{S.r[x.dataset.r]=x.checked;save()});
+  v.querySelectorAll('input[data-r]').forEach(x=>x.onchange=()=>{S.r[x.dataset.r]=x.checked;save();$('conf').style.display=(S.r.r14&&S.r.r15)?'block':'none'});
   $('extra').oninput=bind('extra');initPad('pad2','n2');
   const b=$('selsug');if(b)b.onclick=()=>{sug.forEach(r=>S.r[r[0]]=true);save();render()};
  }else{
@@ -179,6 +180,7 @@ function render(){
   const str=AREAS.flatMap(a=>sel(a).filter(i=>i[2]=='s').map(tx));
   const foc=AREAS.map(a=>[a.title,sel(a).filter(i=>i[2]=='f').map(tx)]).filter(x=>x[1].length);
   const rec=RECS.filter(r=>S.r[r[0]]).map(r=>rt(r[1]));if(S.extra.trim())rec.push(S.extra.trim());
+  if(S.r.r14&&S.r.r15)rec.push('שימי לב: נבחרו גם מפגשים קבוצתיים וגם פרטניים, ואי אפשר להמליץ על שניהם יחד. נא להשאיר אחת.');
   const d=S.date?S.date.split('-').reverse().join('.'):'';
   v.innerHTML=`<div class="card rep" id="report"><h2 style="margin-top:0">דוח סיכום מיפוי: הכנה לכיתה א'</h2>
   <div class="meta"><span>שם: ${esc(S.name)||'___'}</span><span>${S.g==='f'?'בת':'בן'}</span><span>גיל: ${esc(S.age)||'___'}</span><span>תאריך: ${esc(d)}</span><span>מעבירה: ${esc(S.by)||'___'}</span></div>
